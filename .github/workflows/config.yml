@@ -33,3 +33,9 @@ jobs:
         run: |
           yarn
           expo publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: surefire-reports
+          path: mymeeave/target/surefire-reports/**
