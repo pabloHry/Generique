@@ -21,6 +21,14 @@ export default function CameraTakePhoto() {
     })();
   }, []);
 
+
+  let onPhotoPress = async () => {
+    if (cameraRef.current) {
+      let photo = await cameraRef.current.takePictureAsync();
+      setLastPhotoURI(photo.uri);
+    }
+  };
+
   // let counter = 1;
 
   // const countIncrementation = () => {
@@ -66,7 +74,7 @@ export default function CameraTakePhoto() {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
-  
+
   return (
     <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
       <View
@@ -92,7 +100,7 @@ export default function CameraTakePhoto() {
           <FontAwesome name='refresh' size={30} color='white' />
         </TouchableOpacity>
         <Flex mb={10}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               alignSelf: "start",
               flex: 1,
@@ -125,8 +133,36 @@ export default function CameraTakePhoto() {
                   backgroundColor: "white",
                 }}></View>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity
+          </TouchableOpacity> */}
+
+          <View
+              style={{
+                borderWidth: 2,
+                borderRadius: 40,
+                borderColor: "white",
+                height: 65,
+                width: 65,
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
+
+            <TouchableOpacity
+            style={{
+              borderWidth: 2,
+              borderRadius: 25,
+              borderColor: "white",
+              height: 50,
+              width: 50,
+              backgroundColor: "white",
+            }}
+              onPress={onPhotoPress}
+            >
+              <Text style={styles.text}>.</Text>
+            </TouchableOpacity>
+           </View>
+
+
+          {/* <TouchableOpacity
             style={{ alignSelf: "center", marginLeft: 100 }}
             onPress={async () => {
               if (!recording) {
@@ -160,7 +196,7 @@ export default function CameraTakePhoto() {
                   backgroundColor: "red",
                 }}></View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* <Text color='white' textAlign='center' fontSize={20}>
             {count}
           </Text> */}
