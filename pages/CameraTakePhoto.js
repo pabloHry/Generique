@@ -6,21 +6,31 @@ import { Entypo, EvilIcons, FontAwesome } from "@expo/vector-icons";
 import * as MediaLibrary from "expo-media-library";
 
 export default function CameraTakePhoto() {
+  const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [lastPhotoURI, setLastPhotoURI] = useState(null);
   const [recording, setRecording] = useState(false);
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const cameraRef = useRef(null);
-  let counter = 1;
 
-  const countIncrementation = () => {
-    while (counter <= 10) {
-      console.log(counter);
-      setCount(counter++);
-    }
-  };
 
-  console.log(count);
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  // let counter = 1;
+
+  // const countIncrementation = () => {
+  //   while (counter <= 10) {
+  //     console.log(counter);
+  //     setCount(counter++);
+  //   }
+  // };
+
+  // console.log(count);
   if (lastPhotoURI !== null) {
     return (
       <ImageBackground
@@ -48,6 +58,15 @@ export default function CameraTakePhoto() {
       </ImageBackground>
     );
   }
+
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+  
   return (
     <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
       <View
@@ -82,7 +101,7 @@ export default function CameraTakePhoto() {
             onPress={async () => {
               if (cameraRef.current) {
                 let photo = await cameraRef.current.takePictureAsync();
-                setLastPhotoURI(photo.uri);
+                // setLastPhotoURI(photo.uri);
                 await MediaLibrary.createAssetAsync(photo.uri);
               }
             }}>
@@ -113,7 +132,7 @@ export default function CameraTakePhoto() {
               if (!recording) {
                 setRecording(true);
                 let video = await cameraRef.current.recordAsync();
-                countIncrementation();
+                // countIncrementation();
                 await MediaLibrary.createAssetAsync(video.uri);
               } else {
                 setRecording(false);
@@ -142,9 +161,9 @@ export default function CameraTakePhoto() {
                 }}></View>
             </View>
           </TouchableOpacity>
-          <Text color='white' textAlign='center' fontSize={20}>
+          {/* <Text color='white' textAlign='center' fontSize={20}>
             {count}
-          </Text>
+          </Text> */}
         </Flex>
       </View>
     </Camera>
