@@ -49,7 +49,7 @@ export default function HomePage({ navigation }) {
           fontWeight={700}
           color='white'
           fontSize={30}>
-          Générique
+          test
         </Heading>
         <Center mt={10}>
           <HStack space={20} alignItems='center'>
