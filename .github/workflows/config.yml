@@ -29,10 +29,11 @@ jobs:
           node-version: "14"
           registry-url: https://registry.npmjs.org/
 
-      - name: "Deploy to production"
-        run: |
-          yarn
-          expo publish
+      - name: "Install Package"
+        run: yarn
+
+      - name: "Publish app"
+        run: expo publish --non-interactive
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1
