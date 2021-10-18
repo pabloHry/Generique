@@ -28,6 +28,7 @@
     "expo": "^42.0.4",
     "expo-app-loading": "^1.1.2",
     "expo-camera": "~11.2.2",
+    "expo-cli": "^4.12.1",
     "expo-font": "^9.2.1",
     "expo-image-picker": "~10.2.2",
     "expo-media-library": "~12.1.2",

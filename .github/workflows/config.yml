@@ -32,4 +32,4 @@ jobs:
       - name: "Deploy to production"
         run: |
           yarn
-          expo published
+          expo publish
