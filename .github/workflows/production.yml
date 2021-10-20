@@ -19,4 +19,5 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
       - run: yarn
+      - run: expo login -u expo-username -p password
       - run: expo publish --release-channel production
