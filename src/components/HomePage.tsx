@@ -191,6 +191,7 @@ export default function HomePage() {
             alignItems: "center"
           }}
         >
+          <Text color="white" mb={20} fontWeight={700} fontSize={20}>Test Build expo</Text>
           <TouchableOpacity onPress={__startCamera}>
             <Box>
               <Box bg="tomato" p={10} rounded={40}>
