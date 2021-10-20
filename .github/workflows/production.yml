@@ -18,5 +18,11 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+        env: # Or as an environment variable
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn
+        env: # Or as an environment variable
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: expo publish --release-channel production
