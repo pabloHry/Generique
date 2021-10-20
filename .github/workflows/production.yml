@@ -2,7 +2,7 @@ name: Expo Publish on Production
 on:
   push:
     branches:
-      - develop
+      - master
 jobs:
   publish:
     name: Install and publish
