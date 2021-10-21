@@ -1,8 +1,9 @@
 name: Expo Publish on Staging
 on:
   push:
-    branches:
-      - develop
+    branches: [develop]
+  pull_request:
+    branches: [develop]
 jobs:
   publish:
     name: Install and publish
