@@ -32,6 +32,7 @@
     "expo-image-picker": "~10.2.2",
     "expo-media-library": "~12.1.2",
     "expo-status-bar": "~1.0.4",
+    "fs": "^0.0.1-security",
     "googleapis": "^89.0.0",
     "native-base": "3.2.1",
     "patch-package": "^6.4.7",
