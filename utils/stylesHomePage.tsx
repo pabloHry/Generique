@@ -1,39 +1,39 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 const stylesHomePage = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#37474F",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   startCamera: {
     flex: 1,
-    width: "100%"
+    width: "100%",
   },
   camera: {
     flex: 1,
     width: "100%",
     backgroundColor: "transparent",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   cameraPosition: {
     marginTop: 20,
     borderRadius: 50,
     height: 25,
-    width: 25
+    width: 25,
   },
   flashStyle: {
     borderRadius: 50,
     height: 25,
-    width: 25
+    width: 25,
   },
   flashPosition: {
     position: "absolute",
     left: "5%",
     top: "10%",
     flexDirection: "column",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   takePicturePosition: {
     position: "absolute",
@@ -42,12 +42,12 @@ const stylesHomePage = StyleSheet.create({
     flex: 1,
     width: "100%",
     padding: 20,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   takePicturePositionButton: {
     alignSelf: "center",
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   takePictureButton: {
     borderWidth: 2,
@@ -56,7 +56,7 @@ const stylesHomePage = StyleSheet.create({
     height: 65,
     width: 65,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   takePictureButtonBorder: {
     borderWidth: 2,
@@ -64,8 +64,8 @@ const stylesHomePage = StyleSheet.create({
     borderColor: "white",
     height: 50,
     width: 50,
-    backgroundColor: "white"
-  }
+    backgroundColor: "white",
+  },
 });
 
 export default stylesHomePage;

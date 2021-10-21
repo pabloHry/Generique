@@ -1,25 +1,19 @@
 import { StatusBar } from "expo-status-bar";
-import React, {useState} from "react";
-import {
-  View,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import React, { useState } from "react";
+import { View, TouchableOpacity, Alert } from "react-native";
 import { Camera } from "expo-camera";
 import { Text } from "native-base";
-import CameraPreview from './CameraPreview';
-import CameraOff from './CameraOff';
+import CameraPreview from "./CameraPreview";
+import CameraOff from "./CameraOff";
 import * as MediaLibrary from "expo-media-library";
-import styles from "../../utils/stylesHomePage"
+import styles from "../../utils/stylesHomePage";
 
 let camera: Camera;
 export default function HomePage() {
   const [startCamera, setStartCamera] = useState<boolean>(false);
   const [previewVisible, setPreviewVisible] = useState<boolean>(false);
   const [capturedImage, setCapturedImage] = useState<any>(null);
-  const [cameraType, setCameraType] = useState<any>(
-    Camera.Constants.Type.back
-  );
+  const [cameraType, setCameraType] = useState<any>(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState<any>("off");
 
   const __startCamera = async () => {
@@ -77,31 +71,26 @@ export default function HomePage() {
               style={{ flex: 1 }}
               ref={(r: any) => {
                 camera = r;
-              }}
-            >
+              }}>
               <View style={styles.camera}>
                 <View style={styles.flashPosition}>
                   <TouchableOpacity
                     onPress={__handleFlashMode}
-                    style={styles.flashStyle}
-                  >
+                    style={styles.flashStyle}>
                     <Text
                       style={{
-                        fontSize: 20
-                      }}
-                    >
+                        fontSize: 20,
+                      }}>
                       ⚡️
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={__switchCamera}
-                    style={styles.cameraPosition}
-                  >
+                    style={styles.cameraPosition}>
                     <Text
                       style={{
-                        fontSize: 20
-                      }}
-                    >
+                        fontSize: 20,
+                      }}>
                       {cameraType === "front" ? "🤳" : "📷"}
                     </Text>
                   </TouchableOpacity>
@@ -121,11 +110,10 @@ export default function HomePage() {
         </View>
       ) : (
         <>
-          <CameraOff startCamera={__startCamera}/>
+          <CameraOff startCamera={__startCamera} />
         </>
       )}
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </View>
   );
 }
-
