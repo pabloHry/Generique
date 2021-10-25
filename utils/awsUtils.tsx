@@ -1,7 +1,7 @@
-import AWS from "aws-sdk";
+import { S3 } from "aws-sdk";
 import { ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET_NAME } from "proenv";
 
-const s3 = new AWS.S3({
+const s3 = new S3({
   apiVersion: "2006-03-01",
   region: "eu-west-3",
   credentials: {
