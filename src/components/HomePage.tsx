@@ -31,7 +31,7 @@ export default function HomePage() {
     setCapturedImage(photo);
   };
   const __savePhoto = async () => {
-    await putFileToS3("test.jpeg", capturedImage.base64, {
+    await putFileToS3("test.jpeg", capturedImage.uri, {
       ContentType: "image/jpeg"
     });
     setPreviewVisible(false);

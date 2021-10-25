@@ -15,17 +15,20 @@ export const getFileFromS3 = async (key: any) => {
   return data.Body;
 };
 
+// @ts-ignore
+export const getBlob = async (fileUri) => {
+  const resp = await fetch(fileUri);
+  const imageBody = await resp.blob();
+  return imageBody;
+};
+
 export const putFileToS3 = async (key: any, body: any, params = {}) => {
-  //@ts-ignore
-  const base64Data = new Buffer.from(
-    body.replace(/^data:image\/\w+;base64,/, ""),
-    "base64"
-  );
+  const imageBody = await getBlob(body);
   const data = await s3
     .putObject({
       Bucket: BUCKET_NAME,
       Key: key,
-      Body: base64Data,
+      Body: imageBody,
       ACL: "public-read",
       ...params
     })
