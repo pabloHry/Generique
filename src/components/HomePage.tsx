@@ -6,7 +6,8 @@ import { Text } from "native-base";
 import CameraPreview from "./CameraPreview";
 import CameraOff from "./CameraOff";
 import * as MediaLibrary from "expo-media-library";
-import styles from "../../utils/stylesHomePage";
+import styles from "../../utils/stylesHomePageUtils";
+import { getFileFromS3, putFileToS3 } from "../../utils/awsUtils";
 
 let camera: Camera;
 export default function HomePage() {
@@ -31,6 +32,10 @@ export default function HomePage() {
   };
   const __savePhoto = () => {
     MediaLibrary.createAssetAsync(capturedImage.uri);
+    putFileToS3(capturedImage.uri, {
+      ContentType: "image/gif, image/png, image/jpeg, image/bmp, image/webp"
+    });
+
     setPreviewVisible(false);
   };
   const __retakePicture = () => {
@@ -71,26 +76,31 @@ export default function HomePage() {
               style={{ flex: 1 }}
               ref={(r: any) => {
                 camera = r;
-              }}>
+              }}
+            >
               <View style={styles.camera}>
                 <View style={styles.flashPosition}>
                   <TouchableOpacity
                     onPress={__handleFlashMode}
-                    style={styles.flashStyle}>
+                    style={styles.flashStyle}
+                  >
                     <Text
                       style={{
-                        fontSize: 20,
-                      }}>
+                        fontSize: 20
+                      }}
+                    >
                       ⚡️
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     onPress={__switchCamera}
-                    style={styles.cameraPosition}>
+                    style={styles.cameraPosition}
+                  >
                     <Text
                       style={{
-                        fontSize: 20,
-                      }}>
+                        fontSize: 20
+                      }}
+                    >
                       {cameraType === "front" ? "🤳" : "📷"}
                     </Text>
                   </TouchableOpacity>
@@ -113,7 +123,7 @@ export default function HomePage() {
           <CameraOff startCamera={__startCamera} />
         </>
       )}
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
     </View>
   );
 }
