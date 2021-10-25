@@ -5,9 +5,9 @@ import { Camera } from "expo-camera";
 import { Text } from "native-base";
 import CameraPreview from "./CameraPreview";
 import CameraOff from "./CameraOff";
-import * as MediaLibrary from "expo-media-library";
 import styles from "../../utils/stylesHomePageUtils";
-import { getFileFromS3, putFileToS3 } from "../../utils/awsUtils";
+import { putFileToS3 } from "../../utils/awsUtils";
+import { BUCKET_NAME } from "proenv";
 
 let camera: Camera;
 export default function HomePage() {
@@ -30,12 +30,10 @@ export default function HomePage() {
     setPreviewVisible(true);
     setCapturedImage(photo);
   };
-  const __savePhoto = () => {
-    MediaLibrary.createAssetAsync(capturedImage.uri);
-    putFileToS3(capturedImage.uri, {
-      ContentType: "image/gif, image/png, image/jpeg, image/bmp, image/webp"
+  const __savePhoto = async () => {
+    putFileToS3(BUCKET_NAME, capturedImage.uri, {
+      ContentType: "image/png, image/jpeg, image/jpg,"
     });
-
     setPreviewVisible(false);
   };
   const __retakePicture = () => {
