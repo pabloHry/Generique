@@ -7,8 +7,7 @@ import CameraPreview from "./CameraPreview";
 import CameraOff from "./CameraOff";
 import styles from "../../utils/stylesHomePageUtils";
 import { putFileToS3 } from "../../utils/awsUtils";
-import { BUCKET_NAME } from "proenv";
-
+import { nameOfObject } from "../../utils/nameOfObject";
 let camera: Camera;
 export default function HomePage() {
   const [startCamera, setStartCamera] = useState<boolean>(false);
@@ -31,7 +30,7 @@ export default function HomePage() {
     setCapturedImage(photo);
   };
   const __savePhoto = async () => {
-    await putFileToS3("test.jpeg", capturedImage.uri, {
+    await putFileToS3(nameOfObject(capturedImage.uri), capturedImage.uri, {
       ContentType: "image/jpeg"
     });
     setPreviewVisible(false);

@@ -15,8 +15,7 @@ export const getFileFromS3 = async (key: any) => {
   return data.Body;
 };
 
-// @ts-ignore
-export const getBlob = async (fileUri) => {
+export const getBlob = async (fileUri: string) => {
   const resp = await fetch(fileUri);
   const imageBody = await resp.blob();
   return imageBody;
