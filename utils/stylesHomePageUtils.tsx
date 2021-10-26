@@ -65,6 +65,37 @@ const stylesHomePage = StyleSheet.create({
     height: 50,
     width: 50,
     backgroundColor: "white"
+  },
+  takeRecordPosition: {
+    position: "absolute",
+    bottom: 0,
+    flexDirection: "row",
+    flex: 1,
+    width: "100%",
+    padding: 20,
+    justifyContent: "space-between"
+  },
+  takeRecordPositionButton: {
+    alignSelf: "center",
+    flex: 1,
+    alignItems: "center"
+  },
+  takeRecordButton: {
+    borderWidth: 2,
+    borderRadius: 40,
+    borderColor: "white",
+    height: 65,
+    width: 65,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  takeRecordButtonBorder: {
+    borderWidth: 2,
+    borderRadius: 25,
+    borderColor: "red",
+    height: 50,
+    width: 50,
+    backgroundColor: "red"
   }
 });
 
