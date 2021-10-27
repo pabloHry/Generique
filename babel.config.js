@@ -16,8 +16,15 @@ module.exports = function (api) {
             ".ios.js",
             ".ios.tsx"
           ],
-          root: ["./src"]
+          root: ["./src", "./"]
         }
+      ],
+      [
+       "module:react-native-dotenv",
+        {
+          moduleName: "proenv",
+          path: ".env",
+        },
       ]
     ]
   };
