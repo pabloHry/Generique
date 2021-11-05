@@ -20,11 +20,7 @@ const CameraPreview = ({
     >
       {photo != null ? (
         <ImageBackground
-          source={
-            photo != null
-              ? { uri: photo && photo.uri }
-              : { uri: video && video.uri }
-          }
+          source={{ uri: photo && photo.uri }}
           style={{
             flex: 1
           }}
